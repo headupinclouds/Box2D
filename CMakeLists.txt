@@ -223,12 +223,11 @@ install(
   INCLUDES DESTINATION "${include_install_dir}"
   )
 
-foreach(HEADER ${TARGET_PUBLIC_HDRS})
-  install(
-    FILES "${HEADER}"
-    DESTINATION "${include_install_dir}/${PROJECT_NAME}"
-    )
-endforeach()
+install(
+  DIRECTORY Box2D # No trailing slash
+  DESTINATION "${include_install_dir}/"
+  FILES_MATCHING PATTERN "*.h" PATTERN "*.hpp"
+  )
 
 install(
   FILES "${project_config}" "${version_config}"
